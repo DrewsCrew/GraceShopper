@@ -96,7 +96,7 @@ async function seed() {
       return Product.create(product);
     })
   );
-
+  //
   const lineItemSeed = await Promise.all(
     lineitems.map((product) => {
       return LineItem.create(product);
