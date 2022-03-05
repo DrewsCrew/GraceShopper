@@ -2,6 +2,10 @@ const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
+const cors = require("cors");
+
+app.use(cors());
+
 module.exports = app;
 
 // logging middleware
@@ -42,4 +46,10 @@ app.use((err, req, res, next) => {
   console.error(err);
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || "Internal server error.");
+});
+
+app.use("/login", (req, res) => {
+  res.send({
+    token: "test123",
+  });
 });
