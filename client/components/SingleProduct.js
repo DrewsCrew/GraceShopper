@@ -6,11 +6,15 @@ import { Button } from "@material-ui/core";
 import { useParams } from "react-router";
 import useCart from "../hooks/useCart";
 import { fetchAddToBasket } from "../store/cartReducer";
+import useAuth from "../hooks/useAuth";
+
 const SingleProduct = () => {
   const product = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const { id } = useParams();
   const { addToCart } = useCart();
+  const { user } = useAuth();
+  const { isAdmin } = user;
   console.log(product);
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
@@ -27,14 +31,20 @@ const SingleProduct = () => {
       <h2>Size: {product.size}</h2>
       <h2>Price: ${product.price}.00</h2>
       <h2>Description: {product.description}</h2>
-      <Button
-        onClick={() => addToCart(product)}
-        size="medium"
-        variant="contained"
-        style={{ backgroundColor: "grey" }}
-      >
-        Add to Cart
-      </Button>
+      {isAdmin ? (
+        <Button>
+          <Link to="/">Go back </Link>
+        </Button>
+      ) : (
+        <Button
+          onClick={() => addToCart(product)}
+          size="medium"
+          variant="contained"
+          style={{ backgroundColor: "grey" }}
+        >
+          Add to Cart
+        </Button>
+      )}
     </div>
   );
 };

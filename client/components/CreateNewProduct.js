@@ -1,20 +1,20 @@
-import React from 'react';
-import { createNewProduct } from '../store/administratorReducer';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { createNewProduct } from "../store/administratorReducer";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 export class CreateNewProduct extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      price: '',
-      gender: '',
-      size: '',
-      description: '',
-      category: '',
-      stock: '',
-      imageUrl: '',
+      name: "",
+      price: "",
+      gender: "",
+      size: "",
+      description: "",
+      category: "",
+      stock: "",
+      imageUrl: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,16 +43,26 @@ export class CreateNewProduct extends React.Component {
       stock,
       imageUrl,
     } = this.state;
-    const { handleSubmit, handleChange, fileUpload } = this;
+    const { handleSubmit, handleChange } = this;
 
     return (
       <div id="container">
         <form id="product-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
-          <input name="name" onChange={handleChange} value={name} />
+          <input
+            placeholder="Name"
+            name="name"
+            onChange={handleChange}
+            value={name}
+          />
 
           <label htmlFor="price">Price:</label>
-          <input name="price" onChange={handleChange} value={price} />
+          <input
+            placeholder="Price"
+            name="price"
+            onChange={handleChange}
+            value={price}
+          />
 
           <label htmlFor="gender">Gender:</label>
           <select name="gender" value={gender} onChange={handleChange}>
@@ -73,6 +83,7 @@ export class CreateNewProduct extends React.Component {
 
           <label htmlFor="description">Description:</label>
           <input
+            placeholder="Description"
             name="description"
             onChange={handleChange}
             value={description}
@@ -90,7 +101,12 @@ export class CreateNewProduct extends React.Component {
           {/* <input name="category" onChange={handleChange} value={category} /> */}
 
           <label htmlFor="stock">Stock:</label>
-          <input name="stock" onChange={handleChange} value={stock} />
+          <input
+            placeholder="Stock"
+            name="stock"
+            onChange={handleChange}
+            value={stock}
+          />
 
           <label htmlFor="imageUrl">Image:</label>
           <input
