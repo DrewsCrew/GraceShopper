@@ -5,7 +5,6 @@ import {
   getSingleProduct,
 } from "../store/singleProductReducer";
 import { connect } from "react-redux";
-import products from "../store/productsReducer";
 
 export class EditProduct extends React.Component {
   constructor(props) {
@@ -54,12 +53,7 @@ export class EditProduct extends React.Component {
       [evt.target.name]: evt.target.value,
     });
   }
-  // handlePriceChange(evt) {
-  //   const newPrice = parseInt(evt.target.value);
-  //   this.setState({
-  //     [evt.target.name]: newPrice,
-  //   });
-  // }
+
   handleSubmit(evt) {
     evt.preventDefault();
     console.log("mystate", this.state);
